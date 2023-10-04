@@ -1,3 +1,6 @@
 #!/bin/bash
 
-set -o posix ; set | grep -E '^([[:alnum:]_]+)=' ; env | grep -E '^([[:alnum:]_]+)=' ; declare -F | awk '{print $3}'
+set.sorted=$(set | sort)
+printenv.sorted=$(printenv | sort)
+
+diff <(echo "$set.sorted") <(echo "$printenv.sorted") | grep "<" | awk '{ print $2 }'
