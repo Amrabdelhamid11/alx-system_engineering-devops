@@ -1,6 +1,4 @@
-#!/bin/bash
+#!/bin/bash 
+set | grep -E '^[[:alpha:]_][[:alnum:]_]*='
+declare -F | awk '{print $3}'
 
-set.sorted=$(set | sort)
-printenv.sorted=$(printenv | sort)
-
-diff <(echo "$set.sorted") <(echo "$printenv.sorted") | grep "<" | awk '{ print $2 }'
