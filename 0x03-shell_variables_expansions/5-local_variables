@@ -1,2 +1,21 @@
-5-local_variables
-declare
+#!/bin/bash
+
+# List local variables
+echo "Local Variables:"
+echo "================"
+local_vars=$(set -o posix ; set)
+echo "$local_vars"
+echo ""
+
+# List environment variables
+echo "Environment Variables:"
+echo "======================"
+env_vars=$(env)
+echo "$env_vars"
+echo ""
+
+# List functions
+echo "Functions:"
+echo "=========="
+functions=$(declare -F)
+echo "$functions"
